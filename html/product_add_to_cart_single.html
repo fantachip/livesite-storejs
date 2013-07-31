@@ -1,0 +1,20 @@
+<div class="summary">
+	<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+		<p itemprop="price" class="price">
+			Pris: <span class="amount">${product_list_price}:-</span>
+		</p>
+		<link itemprop="availability" href="http://schema.org/InStock" />
+	</div>
+	<div itemprop="description">
+		${product_short_text}
+	</div>
+	<form action="?" class="cart" method="post" enctype='multipart/form-data'>
+		<input type="hidden" name="add-to-cart" value="${product_sku}"/>
+		<div class="quantity"><input type="text" name="quantity" data-min="1" data-max="0" value="1" size="4" title="Qty" class="input-text qty text" maxlength="12" /></div>
+		<button type="submit" class="single_add_to_cart_button button alt">Lägg i varukorg</button>
+	</form>
+
+	<div class="product_meta">
+		<span itemprop="productID" class="sku">Art. nr. ${product_sku}.</span>
+	</div>
+</div><!-- .summary -->

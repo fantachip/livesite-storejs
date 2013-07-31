@@ -1,0 +1,32 @@
+{{^cart.submitted}}
+<table class="table table-bordered table-stripped">
+	{{^products}}
+		<tr><td colspan="2"><p>Du har {{count}} produkter i varukorgen.</p></td></tr>
+	{{/products}}
+	{{#products}}
+		<tr><td><a href="{{url}}">{{product.name}}</a></td><td style="width: 10px;">{{count}}</td></tr>
+	{{/products}}
+	<tr><td colspan="2"><span class="badge badge-important" style="float: right;">Delsumma: {{total}}kr</span></td></tr>
+</table>
+<p style="text-align: center;"><a href="/service/checkout" class="btn btn-success"><i class="icon-shopping-cart"></i> Till Kassan &rarr;</a></p>
+{{/cart.submitted}}
+{{#cart.submitted}}
+	{{^cart.paid}}
+		<p style="text-align: center;">
+			Order #: {{cart.order_number}}
+		</p>
+		<form action="/service/checkout" method="post">
+		<p style="text-align: center;">
+			<a href="/service/checkout" class="btn btn-success"><i class="icon-shopping-cart"></i>Betala</a>
+		</p>
+		<form action="/service/checkout" method="post">
+			<input type="hidden" name="order_cancel" value="1"/>
+			<p style="text-align: center;">
+				<a class="storejs_cancel_order" href="/service/checkout?order_cancel=1" class="btn btn-error">Avbryt order</a>
+			</p>
+		</form>
+	{{/cart.paid}}
+	{{#cart.paid}}
+		<p>Din order är betald.</p>
+	{{/cart.paid}}
+{{/cart.submitted}}

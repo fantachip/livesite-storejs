@@ -1,0 +1,26 @@
+<div class="summary">
+	<h3>{{title}}</h3>
+	<div style="width: 50%; float: left;">
+		<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+			<p itemprop="price" class="price" style="padding-left: 10px;">
+				Pris: <span class="amount">{{price}}:-</span>
+			</p>
+			<link itemprop="availability" href="http://schema.org/InStock" />
+		</div>
+		<div itemprop="description">
+			{{{short_description}}}
+		</div>
+		<form action="?" class="cart" method="post" enctype='multipart/form-data'>
+			<input type="hidden" name="add-to-cart" value="{{id}}"/>
+			<div class="quantity"><input type="text" name="quantity" data-min="1" data-max="0" value="1" size="4" title="Qty" class="input-text qty text" maxlength="12" /></div>
+			<button type="submit" class="single_add_to_cart_button button alt">KÖP</button>
+		</form>
+
+		<div class="product_meta">
+			<span itemprop="productID" class="sku">Art. nr. {{sku}}.</span>
+		</div>
+	</div>
+	<div style="background: #aaa; width: 100px; height: 100px; float: right;">
+	<img style="width: 100%; height: 100%;" src="{{{image}}}"/>
+	</div>
+</div><!-- .summary -->

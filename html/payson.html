@@ -1,0 +1,28 @@
+<form id="payson_redirect_form" action="{{payson_adr}}" accept-charset="ISO-8859-15" method="post" id="payson_payment_form">
+<input type="hidden" name="BuyerEmail" value="{{buyer_email}}" />
+<input type="hidden" name="BuyerFirstName" value="{{buyer_first_name}}" />
+<input type="hidden" name="BuyerLastName" value="{{buyer_last_name}}" />
+<input type="hidden" name="AgentID" value="{{agent_id}}" />
+<input type="hidden" name="Description" value="{{description}}" />
+<input type="hidden" name="SellerEmail" value="{{seller_email}}" />
+<input type="hidden" name="Cost" value="{{cost}}" />
+<input type="hidden" name="ExtraCost" value="{{extra_cost}}" />
+<input type="hidden" name="OkUrl" value="{{ok_url}}" />
+<input type="hidden" name="CancelUrl" value="{{cancel_url}}" />
+<input type="hidden" name="RefNr" value="{{ref_nr}}" />
+<input type="hidden" name="MD5" value="{{md5_hash}}" />
+<input type="hidden" name="GuaranteeOffered" value="{{guarantee_offered}}" />
+<p style="text-align: center;">
+	<button type="cancel" class="btn btn-error" style="float: right;">Avbryt order</button>
+	<button type="submit" class="btn btn-success"><i class="icon-shopping-cart"></i> Betala via payson</button>
+</p>
+</form>
+<div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			setTimeout(function(){
+				$("#payson_redirect_form").submit();
+			}, 2000); 
+		});
+	</script>
+</div>

@@ -1,0 +1,57 @@
+<ul id="storejs_product_info_tabs" class="nav nav-tabs">
+	<li class="active"><a href="#info" data-toggle="tab">Info</a></li>
+	<li><a href="#produktblad" data-toggle="tab">Produktblad</a></li>
+	<li><a href="#recensioner" data-toggle="tab">Recensioner</a></li>
+</ul>
+
+<div class="tab-content">
+<div class="tab-pane active" id="info">
+	<div itemscope itemtype="http://schema.org/Product" id="product-{{id}}" class="">
+	<div class="heading">
+		<h1>{{title}}</h1>
+	</div>
+	<div class="row">
+		<div class="span3 pull-right" style="">{{{description}}}</div>
+		<div class="span3 pull-left">
+			<a class="thumbnail" itemprop="image" href="{{{image}}}" class="zoom" rel="thumbnails" title="{{title}}">
+					<img alt="{{title}}" src="{{{image}}}" style="width: 200px; height: 200px;" title="{{{title}}}"/>
+			</a><br/>
+			<div class="well">
+				<h3>Delbetalning</h3>
+				<img style=" padding: 4px;" src="/images/delbetalning_klarna.png" />
+				<p>Delbetala från med Klarna Konto.</p>
+			</div>
+		</div>
+	</div>
+	
+	</div>
+	<div style="clear: both;"></div>
+	<table class='table table-bordered table-stripped' style='width:100%;'>
+		<tr><th>Alternativ</th><th style='width: 20px;'>Pris</th><th>Köp</th></tr>
+		{{#alternatives}}
+		<tr>
+			<td>{{name}}</td>
+			<td><span class="badge badge-important">{{price}} SEK</span></td>
+			<td style='width:140px;'>
+				<form action="/service/checkout" class="cart add_to_cart_form" method="post" enctype='multipart/form-data' style="width: 100%;">
+					<input type="hidden" name="add-to-cart" value="{{id}}"/>
+					<input style="width: 30px;" type="text" name="quantity" data-min="1" data-max="0" value="1" size="4" title="Qty" class="input-small" maxlength="12" />
+					<button type="submit" class="btn btn-success" onclick="storejs_add_to_cart_ajax();" style="float: right;"><i class="icon-shopping-cart"></i> KÖP</button>
+				</form>
+			</td>
+		</tr>
+		{{/alternatives}}
+	</table>
+</div>
+<div class="tab-pane" id="produktblad">
+	<p>Inga produktblad finns för denna produkt.</p>
+</div>
+<div class="tab-pane" id="recensioner">
+	<p>Inga recensioner finns för denna produkt.</p>
+</div>
+</div>
+<script>
+$(function () {
+	$('#storejs_product_info_tabs a:first').tab('show');
+})
+</script>

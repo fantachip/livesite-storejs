@@ -1,0 +1,44 @@
+<form action="{{paypal_adr}}" accept-charset="UTF-8" method="post" id="paypal_payment_form" target="_top">
+	<input type="hidden" name="cmd" value="_cart"/>
+	<input type="hidden" name="business" value="{{seller_email}}"/>
+	<input type="hidden" name="no_note" value="1"/>
+	<input type="hidden" name="currency_code" value="SEK"/>
+	<input type="hidden" name="charset" value="UTF-8"/>
+	<input type="hidden" name="upload" value="1"/>
+	<input type="hidden" name="return" value="{{ok_url}}"/>
+	<input type="hidden" name="cancel_return" value="{{cancel_url}}"/>
+	<input type="hidden" name="page_style" value=""/>
+	<input type="hidden" name="invoice" value="{{ref_nr}}"/>
+	<input type="hidden" name="notify_url" value="{{ok_url}}/?listener=IPN"/>
+	<input type="hidden" name="first_name" value="{{buyer_first_name}}"/>
+	<input type="hidden" name="last_name" value="{{buyer_last_name}}"/>
+	<input type="hidden" name="company" value="{{buyer_company}}"/>
+	<input type="hidden" name="address1" value="{{buyer_address}}"/>
+	<input type="hidden" name="address2" value=""/>
+	<input type="hidden" name="city" value="{{buyer_city}}"/>
+	<input type="hidden" name="state" value="{{buyer_state}}"/>
+	<input type="hidden" name="zip" value="{{buyer_zip}}"/>
+	<input type="hidden" name="country" value="{{buyer_country}}"/>
+	<input type="hidden" name="email" value="{{buyer_email}}"/>
+	<input type="hidden" name="no_shipping" value="1"/>
+	<input type="hidden" name="discount_amount_cart" value="0"/>
+	<input type="hidden" name="item_name_1" value="Betalning för order #{{ref_nr}}"/>
+	<input type="hidden" name="quantity_1" value="1"/>
+	<input type="hidden" name="amount_1" value="{{cart_subtotal}}"/>
+	<input type="hidden" name="item_name_2" value="Frakt"/>
+	<input type="hidden" name="quantity_2" value="1"/>
+	<input type="hidden" name="amount_2" value="{{shipping_total}}"/>
+<p style="text-align: center;">
+	<button type="cancel" class="btn btn-error" style="float: right;">Avbryt order</button>
+	<button type="submit" class="btn btn-success"><i class="icon-shopping-cart"></i> Betala</button>
+</p>
+</form>
+<div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			setTimeout(function(){
+				$("#paypal_payment_form").submit();
+			}, 2000); 
+		});
+	</script>
+</div>
